@@ -9,6 +9,7 @@ import inn_architecture
 import feed_forward_architecture
 import data
 
+
 class GenerativeClassifier(nn.Module):
     def __init__(self, args):
         super().__init__()

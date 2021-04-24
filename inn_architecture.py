@@ -12,6 +12,7 @@ from downsampling_coupling_block import DownsampleCouplingBlock
 from all_in_one_block import AIO_Block
 from dct_transform import DCTPooling2d
 
+
 def construct_irevnet(classifier):
     inn = constuct_inn(classifier)
     projection_layer = nn.Linear(classifier.ndim_tot, classifier.n_classes)
@@ -26,6 +27,7 @@ def construct_irevnet(classifier):
             return self.proj(self.inn(x))
 
     return RevNetWrapper(inn, projection_layer)
+
 
 def constuct_inn(classifier, verbose=False):
 

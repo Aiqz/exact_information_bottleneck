@@ -11,6 +11,7 @@ from model import GenerativeClassifier
 from VIB import WrapperVIB
 import evaluation
 
+
 def train(args):
 
     N_epochs            = eval(args['training']['n_epochs'])
@@ -95,7 +96,7 @@ def train(args):
         for i_epoch in range(N_epochs):
             running_avg = {l: [] for l in train_loss_names}
 
-            for i_batch, (x,l) in enumerate(dataset.train_loader):
+            for i_batch, (x, l) in enumerate(dataset.train_loader):
 
                 x, y = x.cuda(), dataset.onehot(l.cuda(), label_smoothing)
                 losses = inn(x, y)

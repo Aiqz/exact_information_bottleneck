@@ -15,8 +15,10 @@ from torch.autograd import Variable
 
 
 def cuda(tensor, is_cuda):
-    if is_cuda : return tensor.cuda()
-    else : return tensor
+    if is_cuda:
+        return tensor.cuda()
+    else:
+        return tensor
 
 
 class SqueezeFrom2d(nn.Module):
@@ -40,8 +42,9 @@ class ResNetBlock(nn.Module):
         except:
             pass
 
+
 def xavier_init(ms):
-    for m in ms :
+    for m in ms:
         if isinstance(m, nn.Linear) or isinstance(m, nn.Conv2d):
             nn.init.xavier_uniform(m.weight,gain=nn.init.calculate_gain('relu'))
             m.bias.data.zero_()
@@ -227,6 +230,7 @@ class ResnetClassifier(nn.Module):
     def save(self, fname):
         state = self.state_dict()
         torch.save(state, fname)
+
 
 class WrapperVIB(ResnetClassifier):
     def __init__(self, args):
